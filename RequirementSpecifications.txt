@@ -1,0 +1,20 @@
+
+Use the provided library modules (classes) to implement two C modules.
+The RingBuffer test result should be used in the UartDev.c
+
+Module 1: (SerialInterface.c and .h)
+    The SerialInterface module should have a callback as in the template provided.
+    This module is to wait for input from serial port (UartDev.c) until a '\r' received then send to module 2 through callback.
+    This module also provide a write method (SerialInterface_Write())to send data to UartDev.c for serial port output.
+	This module also counting an integer (int _byteCount) on number of bytes received.
+	This module to provide a SerialInterface_Stats() which returns the _byteCount and clears it to 0 after.
+	
+
+Module 2: (Application.c and .h)
+    The Application module should instantiate the SerialInterface (kind of an inheritance) and "realize" the callback.
+    Print out the received data from callback to output device through standard printf().
+    The Application module should also instantiate a thread (using Thread.c) to run once per second (use Sleep(1000)) to print out the number of bytes received in the last second.
+    This bytes per second information needs to send out back through the SerialInterface.
+	
+	
+ 	
